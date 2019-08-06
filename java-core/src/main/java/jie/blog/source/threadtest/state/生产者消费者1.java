@@ -12,11 +12,11 @@ public class 生产者消费者1 {
     public static void main(String[] args) {
         MyQueue<Goods> myQueue = new MyQueue<Goods>(1);
         Thread thread0 = new Thread(new Producer(myQueue), "线程0");
-        Thread thread1 = new Thread(new Producer(myQueue), "线程1");
+//        Thread thread1 = new Thread(new Producer(myQueue), "线程1");
         Thread thread2 = new Thread(new Consumer(myQueue),"线程2");
         Thread thread3 = new Thread(new Consumer(myQueue),"线程3");
         Thread thread4 = new Thread(new Consumer(myQueue),"线程4");
-        thread1.start();
+//        thread1.start();
         thread2.start();
         thread3.start();
         thread4.start();
@@ -61,6 +61,7 @@ public class 生产者消费者1 {
          *默认大小
          */
         final int DEFAULT_SIZE = 10;
+        Object lock = new Object();
         /**
          *实际大小
          */
@@ -73,32 +74,33 @@ public class 生产者消费者1 {
         }
 
         public synchronized void put(T t) throws InterruptedException {
-            while (linkedList.size() >= realSize) {
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+                if (linkedList.size() >= realSize) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                linkedList.add(t);
+                Thread.sleep(100);
+                System.out.println("生产者："+Thread.currentThread().getName()+t.toString());
+                lock.notifyAll();
             }
-            linkedList.add(t);
-            Thread.sleep(0);
-            System.out.println("生产者："+Thread.currentThread().getName()+t.toString());
-            this.notify();
-        }
+
+
 
         public synchronized void get() {
-
-            while (linkedList.size() <= 0) {
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (linkedList.size() <= 0) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            T t = linkedList.pollFirst();
-            System.out.println("消费者：" + Thread.currentThread().getName() + t.toString());
-            this.notify();//消费完一个可以唤醒生产者继续生产
-
+                T t = linkedList.pollFirst();
+                System.out.println("消费者：" + Thread.currentThread().getName() + t.toString());
+                lock.notifyAll();//消费完一个可以唤醒生产者继续生产
         }
 
 
