@@ -20,6 +20,10 @@ public class WaitTest {
         t1.start();
         t2.start();
     }*/
+
+    public synchronized  void testSyn(){
+    }
+
   static synchronized   void doSomeThing() {
       System.out.println(Thread.currentThread().getName()+"做一些事情。。。");
       try {
