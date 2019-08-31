@@ -1,5 +1,7 @@
 package jie.blog.source.springcore.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author: wyj
  * @date: 2019/8/30

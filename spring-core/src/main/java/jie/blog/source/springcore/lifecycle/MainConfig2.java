@@ -2,6 +2,7 @@ package jie.blog.source.springcore.lifecycle;
 
 import jie.blog.source.springcore.bean.Car;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Scope;
  * @date: 2019/8/30
  * @description:
  */
+@ComponentScan(value = "jie.blog.source.springcore.bean")
 @Configuration
 public class MainConfig2 {
 

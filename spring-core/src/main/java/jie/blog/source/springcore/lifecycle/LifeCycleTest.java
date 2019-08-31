@@ -20,7 +20,7 @@ public class LifeCycleTest {
             System.out.println(s);
         }*/
        // 多实例情况在getBean调用初始化，关闭不会调用销毁方法
-        annotationConfigApplicationContext.getBean("car01");
+//        annotationConfigApplicationContext.getBean("car01");
         // 容器关闭的时候会调用bean 的destory方法
         annotationConfigApplicationContext.close();
     }
