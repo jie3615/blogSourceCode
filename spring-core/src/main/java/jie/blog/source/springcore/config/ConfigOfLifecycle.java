@@ -1,4 +1,4 @@
-package jie.blog.source.springcore.lifecycle;
+package jie.blog.source.springcore.config;
 
 import jie.blog.source.springcore.bean.Car;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Scope;
  */
 @ComponentScan(value = "jie.blog.source.springcore.bean")
 @Configuration
-public class MainConfig2 {
+public class ConfigOfLifecycle {
 
     @Scope(value = "prototype")
     @Bean(initMethod = "init",destroyMethod = "destory")

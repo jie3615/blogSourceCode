@@ -1,5 +1,6 @@
-package jie.blog.source.springcore.config;
+package jie.blog.source.springcore.test;
 
+import jie.blog.source.springcore.config.MainConfig;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

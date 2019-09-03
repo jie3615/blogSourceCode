@@ -1,5 +1,6 @@
-package jie.blog.source.springcore.bean;
+package jie.blog.source.springcore.test;
 
+import jie.blog.source.springcore.bean.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

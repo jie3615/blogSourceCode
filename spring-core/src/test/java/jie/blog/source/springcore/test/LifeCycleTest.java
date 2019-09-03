@@ -1,5 +1,6 @@
-package jie.blog.source.springcore.lifecycle;
+package jie.blog.source.springcore.test;
 
+import jie.blog.source.springcore.config.ConfigOfLifecycle;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,7 +14,7 @@ public class LifeCycleTest {
     @Test
     public void test001() {
         // 对象创建完成，并且赋值完毕，调用bean 的init方法（单实例有效）
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(ConfigOfLifecycle.class);
        /* String[] beanDefinitionNames = annotationConfigApplicationContext.getBeanDefinitionNames();
         for (String s : beanDefinitionNames) {
 
