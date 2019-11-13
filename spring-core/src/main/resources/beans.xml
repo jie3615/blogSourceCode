@@ -7,7 +7,7 @@
  ">
     <!--扫描@Controller @Service @Rep...注解的包-->
     <!--<context:component-scan base-package="jie.blog.source.springcore.bean"/> 扫描包的配置-->
-    <bean id="person" class="jie.blog.source.springcore.bean.Person">
+    <bean id="person" class="jie.blog.source.springcore.bean.Person" scope="prototype">
         <property name="age" value="25"/>
         <property name="name" value="wyj"/>
     </bean>
